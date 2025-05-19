@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ＤａＳｕｎ ＭａＸ - CYBER VIBE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --neon-blue: #0ff0fc;
+            --neon-pink: #ff2a6d;
+            --neon-purple: #d300c5;
+            --cyber-dark: #0d0221;
+            --cyber-light: #d1f7ff;
+            --cyber-accent: #00f0ff;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--cyber-dark);
+            color: var(--cyber-light);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
+            transition: all 0.3s;
+        }
+
+        body.light-mode {
+            background-color: #f0f0f0;
+            color: #333;
+            --cyber-light: #333;
+            --cyber-dark: #f0f0f0;
+        }
+
+        /* Cyber Header */
+        .cyber-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed;
+            width: 90%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(13, 2, 33, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        body.light-mode .cyber-header {
+            background-color: rgba(240, 240, 240, 0.9);
+            border-bottom: 1px solid #666;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cyber-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            letter-spacing: 2px;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        body.light-mode .cyber-logo {
+            background: linear-gradient(90deg, #0066ff, #ff00aa);
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 
+                    0 0 5px var(--neon-blue),
+                    0 0 10px var(--neon-blue),
+                    0 0 20px var(--neon-blue),
+                    0 0 40px var(--neon-pink);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+
+        /* Cyber Navigation */
+        .cyber-nav-container {
+            position: relative;
+        }
+
+        .cyber-nav-btn {
+            background: none;
+            border: none;
+            color: var(--neon-blue);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        body.light-mode .cyber-nav-btn {
+            color: #0066ff;
+        }
+
+        .cyber-nav-btn:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .cyber-nav-menu {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: var(--cyber-dark);
+            border: 1px solid var(--neon-blue);
+            border-radius: 5px;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+
+        body.light-mode .cyber-nav-menu {
+            background-color: #f0f0f0;
+            border: 1px solid #666;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cyber-nav-menu.active {
+            max-height: 500px;
+        }
+
+        .cyber-nav-menu a {
+            display: block;
+            padding: 15px 30px;
+            color: var(--cyber-light);
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        body.light-mode .cyber-nav-menu a {
+            color: #333;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .cyber-nav-menu a:hover {
+            background-color: rgba(0, 240, 255, 0.1);
+            color: var(--neon-blue);
+            padding-left: 35px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        body.light-mode .cyber-nav-menu a:hover {
+            background-color: rgba(0, 102, 255, 0.1);
+            color: #0066ff;
+        }
+
+        /* Cyber Hero Section */
+        .cyber-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 150px 5% 50px;
+            background: radial-gradient(circle at center, rgba(13, 2, 33, 0.9) 0%, rgba(13, 2, 33, 1) 100%), 
+                        url('https://i.imgur.com/JQ9qy5x.png') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        body.light-mode .cyber-hero {
+            background: radial-gradient(circle at center, rgba(240, 240, 240, 0.9) 0%, rgba(240, 240, 240, 1) 100%), 
+                        url('https://i.imgur.com/JQ9qy5x.png') center/cover no-repeat;
+        }
+
+        .cyber-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                        transparent 65%, 
+                        rgba(0, 240, 255, 0.05) 65%, 
+                        rgba(0, 240, 255, 0.05) 70%, 
+                        transparent 70%),
+                        linear-gradient(-45deg, 
+                        transparent 65%, 
+                        rgba(255, 42, 109, 0.05) 65%, 
+                        rgba(255, 42, 109, 0.05) 70%, 
+                        transparent 70%);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        .cyber-hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cyber-hero-logo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px;
+            border: 3px solid var(--neon-blue);
+            box-shadow: 0 0 30px var(--neon-blue),
+                        inset 0 0 20px var(--neon-blue);
+            animation: pulse 3s infinite alternate;
+        }
+
+        body.light-mode .cyber-hero-logo {
+            border: 3px solid #0066ff;
+            box-shadow: 0 0 30px #0066ff,
+                        inset 0 0 20px #0066ff;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 30px var(--neon-blue),
+                            inset 0 0 20px var(--neon-blue);
+                transform: scale(1);
+            }
+            100% {
+                box-shadow: 0 0 50px var(--neon-pink),
+                            inset 0 0 30px var(--neon-pink);
+                transform: scale(1.03);
+            }
+        }
+
+        body.light-mode .cyber-hero-logo {
+            animation: pulseLight 3s infinite alternate;
+        }
+
+        @keyframes pulseLight {
+            0% {
+                box-shadow: 0 0 30px #0066ff,
+                            inset 0 0 20px #0066ff;
+                transform: scale(1);
+            }
+            100% {
+                box-shadow: 0 0 50px #ff00aa,
+                            inset 0 0 30px #ff00aa;
+                transform: scale(1.03);
+            }
+        }
+
+        .cyber-hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+            letter-spacing: 3px;
+        }
+
+        body.light-mode .cyber-hero h1 {
+            background: linear-gradient(90deg, #0066ff, #ff00aa);
+        }
+
+        .cyber-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--cyber-light);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        body.light-mode .cyber-hero p {
+            color: #333;
+            text-shadow: none;
+        }
+
+        /* Cyber News Section */
+        .cyber-news {
+            padding: 100px 5%;
+            position: relative;
+            background: linear-gradient(to bottom, var(--cyber-dark) 0%, #0a0520 100%);
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        body.light-mode .cyber-news {
+            background: linear-gradient(to bottom, #f0f0f0 0%, #e0e0e0 100%);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .cyber-section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--neon-blue);
+            text-shadow: 0 0 15px var(--neon-blue),
+                         0 0 30px var(--neon-blue);
+            letter-spacing: 3px;
+            position: relative;
+        }
+
+        body.light-mode .cyber-section-title {
+            color: #0066ff;
+            text-shadow: 0 0 15px rgba(0, 102, 255, 0.5),
+                         0 0 30px rgba(0, 102, 255, 0.3);
+        }
+
+        .cyber-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        body.light-mode .cyber-section-title::after {
+            background: linear-gradient(90deg, transparent, #0066ff, transparent);
+            box-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+        }
+
+        .cyber-news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .cyber-news-slide {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .cyber-news-item {
+            min-width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .cyber-news-card {
+            background: rgba(13, 2, 33, 0.7);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        body.light-mode .cyber-news-card {
+            background: rgba(240, 240, 240, 0.9);
+            border: 1px solid #0066ff;
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.1);
+        }
+
+        .cyber-news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.4);
+            border-color: var(--neon-pink);
+        }
+
+        body.light-mode .cyber-news-card:hover {
+            box-shadow: 0 0 40px rgba(0, 102, 255, 0.2);
+            border-color: #ff00aa;
+        }
+
+        .cyber-news-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--neon-blue);
+        }
+
+        body.light-mode .cyber-news-img {
+            border-bottom: 1px solid #0066ff;
+        }
+
+        .cyber-news-content {
+            padding: 25px;
+        }
+
+        .cyber-news-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        body.light-mode .cyber-news-title {
+            color: #0066ff;
+        }
+
+        .cyber-news-date {
+            display: inline-block;
+            font-size: 0.9rem;
+            color: var(--neon-pink);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        body.light-mode .cyber-news-date {
+            color: #ff00aa;
+        }
+
+        .cyber-news-desc {
+            color: var(--cyber-light);
+            margin-bottom: 20px;
+        }
+
+        body.light-mode .cyber-news-desc {
+            color: #333;
+        }
+
+        .cyber-news-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .cyber-news-nav-btn {
+            background: none;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 0 15px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body.light-mode .cyber-news-nav-btn {
+            border: 1px solid #0066ff;
+            color: #0066ff;
+        }
+
+        .cyber-news-nav-btn:hover {
+            background-color: rgba(0, 240, 255, 0.1);
+            color: var(--neon-pink);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 42, 109, 0.3);
+            transform: scale(1.1);
+        }
+
+        body.light-mode .cyber-news-nav-btn:hover {
+            background-color: rgba(0, 102, 255, 0.1);
+            color: #ff00aa;
+            border-color: #ff00aa;
+            box-shadow: 0 0 20px rgba(255, 0, 170, 0.2);
+        }
+
+        .cyber-news-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .cyber-news-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(0, 240, 255, 0.3);
+            margin: 0 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        body.light-mode .cyber-news-indicator {
+            background-color: rgba(0, 102, 255, 0.3);
+        }
+
+        .cyber-news-indicator.active {
+            background-color: var(--neon-blue);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        body.light-mode .cyber-news-indicator.active {
+            background-color: #0066ff;
+            box-shadow: 0 0 10px #0066ff;
+        }
+
+        /* Cyber Contact Form Section */
+        .cyber-contact {
+            padding: 100px 5%;
+            background: radial-gradient(circle at center, #0a0520 0%, var(--cyber-dark) 100%);
+            transition: all 0.3s;
+        }
+
+        body.light-mode .cyber-contact {
+            background: radial-gradient(circle at center, #e0e0e0 0%, #f0f0f0 100%);
+        }
+
+        .cyber-contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(13, 2, 33, 0.7);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        body.light-mode .cyber-contact-form {
+            background: rgba(240, 240, 240, 0.9);
+            border: 1px solid #0066ff;
+            box-shadow: 0 0 40px rgba(0, 102, 255, 0.1);
+        }
+
+        .cyber-contact-form::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent 45%,
+                rgba(0, 240, 255, 0.05) 45%,
+                rgba(0, 240, 255, 0.05) 55%,
+                transparent 55%
+            );
+            transform: rotate(45deg);
+            pointer-events: none;
+        }
+
+        body.light-mode .cyber-contact-form::before {
+            background: linear-gradient(
+                to bottom right,
+                transparent 45%,
+                rgba(0, 102, 255, 0.05) 45%,
+                rgba(0, 102, 255, 0.05) 55%,
+                transparent 55%
+            );
+        }
+
+        .cyber-form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .cyber-form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--neon-blue);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        body.light-mode .cyber-form-group label {
+            color: #0066ff;
+        }
+
+        .cyber-form-control {
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(0, 240, 255, 0.05);
+            border: 1px solid var(--neon-blue);
+            border-radius: 5px;
+            color: var(--cyber-light);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        body.light-mode .cyber-form-control {
+            background-color: rgba(0, 102, 255, 0.05);
+            border: 1px solid #0066ff;
+            color: #333;
+        }
+
+        .cyber-form-control:focus {
+            outline: none;
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 15px rgba(255, 42, 109, 0.3);
+            background-color: rgba(255, 42, 109, 0.05);
+        }
+
+        body.light-mode .cyber-form-control:focus {
+            border-color: #ff00aa;
+            box-shadow: 0 0 15px rgba(255, 0, 170, 0.2);
+            background-color: rgba(255, 0, 170, 0.05);
+        }
+
+        .cyber-btn-submit {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: var(--cyber-dark);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+
+        body.light-mode .cyber-btn-submit {
+            background: linear-gradient(45deg, #0066ff, #aa00ff);
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .cyber-btn-submit:hover {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+            box-shadow: 0 0 30px rgba(255, 42, 109, 0.4);
+            transform: translateY(-3px);
+        }
+
+        body.light-mode .cyber-btn-submit:hover {
+            background: linear-gradient(45deg, #ff00aa, #aa00ff);
+            box-shadow: 0 0 30px rgba(255, 0, 170, 0.3);
+        }
+
+        /* Cyber Channels Section */
+        .cyber-channels {
+            padding: 100px 5%;
+            text-align: center;
+            background: linear-gradient(to bottom, #0a0520 0%, var(--cyber-dark) 100%);
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        body.light-mode .cyber-channels {
+            background: linear-gradient(to bottom, #e0e0e0 0%, #f0f0f0 100%);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .cyber-channel-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 30px var(--neon-blue);
+            transition: all 0.3s;
+        }
+
+        body.light-mode .cyber-channel-logo {
+            border: 2px solid #0066ff;
+            box-shadow: 0 0 30px #0066ff;
+        }
+
+        .cyber-channel-logo:hover {
+            transform: rotate(15deg);
+            box-shadow: 0 0 40px var(--neon-pink);
+            border-color: var(--neon-pink);
+        }
+
+        body.light-mode .cyber-channel-logo:hover {
+            box-shadow: 0 0 40px #ff00aa;
+            border-color: #ff00aa;
+        }
+
+        .cyber-channel-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--neon-blue);
+            letter-spacing: 3px;
+        }
+
+        body.light-mode .cyber-channel-title {
+            color: #0066ff;
+            text-shadow: 0 0 15px rgba(0, 102, 255, 0.5);
+        }
+
+        .cyber-channel-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: var(--cyber-dark);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            border-radius: 50px;
+            margin: 30px 0;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            letter-spacing: 1px;
+        }
+
+        body.light-mode .cyber-channel-btn {
+            background: linear-gradient(45deg, #0066ff, #aa00ff);
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .cyber-channel-btn:hover {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+            box-shadow: 0 0 40px rgba(255, 42, 109, 0.4);
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        body.light-mode .cyber-channel-btn:hover {
+            background: linear-gradient(45deg, #ff00aa, #aa00ff);
+            box-shadow: 0 0 40px rgba(255, 0, 170, 0.3);
+        }
+
+        .cyber-notice {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: rgba(255, 42, 109, 0.1);
+            color: var(--neon-pink);
+            border: 1px solid var(--neon-pink);
+            border-radius: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(255, 42, 109, 0.2);
+        }
+
+        body.light-mode .cyber-notice {
+            background-color: rgba(255, 0, 170, 0.1);
+            color: #ff00aa;
+            border: 1px solid #ff00aa;
+            box-shadow: 0 0 15px rgba(255, 0, 170, 0.2);
+        }
+
+        /* Cyber Skills/Services Sections */
+        .cyber-skills, .cyber-services {
+            padding: 100px 5%;
+            display: none;
+            background: radial-gradient(circle at center, #0a0520 0%, var(--cyber-dark) 100%);
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        body.light-mode .cyber-skills,
+        body.light-mode .cyber-services {
+            background: radial-gradient(circle at center, #e0e0e0 0%, #f0f0f0 100%);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .cyber-service-item {
+            background: rgba(13, 2, 33, 0.7);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+        }
+
+        body.light-mode .cyber-service-item {
+            background: rgba(240, 240, 240, 0.9);
+            border: 1px solid #0066ff;
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.1);
+        }
+
+        .cyber-service-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 40px rgba(255, 42, 109, 0.2);
+        }
+
+        body.light-mode .cyber-service-item:hover {
+            border-color: #ff00aa;
+            box-shadow: 0 0 40px rgba(255, 0, 170, 0.2);
+        }
+
+        .cyber-service-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        body.light-mode .cyber-service-title {
+            color: #0066ff;
+        }
+
+        .cyber-service-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: var(--cyber-dark);
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        body.light-mode .cyber-service-btn {
+            background: linear-gradient(45deg, #0066ff, #aa00ff);
+            color: white;
+            box-shadow: 0 0 15px rgba(0, 102, 255, 0.2);
+        }
+
+        .cyber-service-btn:hover {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+            box-shadow: 0 0 25px rgba(255, 42, 109, 0.3);
+            transform: translateY(-3px);
+        }
+
+        body.light-mode .cyber-service-btn:hover {
+            background: linear-gradient(45deg, #ff00aa, #aa00ff);
+            box-shadow: 0 0 25px rgba(255, 0, 170, 0.3);
+        }
+
+        /* Language Skill Items */
+        .cyber-language-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background: rgba(13, 2, 33, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--neon-blue);
+            transition: all 0.3s;
+        }
+
+        body.light-mode .cyber-language-item {
+            background: rgba(240, 240, 240, 0.8);
+            border-left: 4px solid #0066ff;
+        }
+
+        .cyber-language-item:hover {
+            transform: translateX(10px);
+            border-left-color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 42, 109, 0.2);
+        }
+
+        body.light-mode .cyber-language-item:hover {
+            border-left-color: #ff00aa;
+            box-shadow: 0 0 20px rgba(255, 0, 170, 0.2);
+        }
+
+        .cyber-language-icon {
+            width: 60px;
+            height: 60px;
+            margin-right: 20px;
+            object-fit: contain;
+        }
+
+        .cyber-language-details {
+            flex: 1;
+        }
+
+        .cyber-language-name {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-blue);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        body.light-mode .cyber-language-name {
+            color: #0066ff;
+        }
+
+        .cyber-language-desc {
+            color: var(--cyber-light);
+            font-size: 0.9rem;
+        }
+
+        body.light-mode .cyber-language-desc {
+            color: #555;
+        }
+
+        /* Cyber Settings Section */
+        .cyber-settings {
+            padding: 100px 5%;
+            display: none;
+            text-align: center;
+            background: radial-gradient(circle at center, #0a0520 0%, var(--cyber-dark) 100%);
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        body.light-mode .cyber-settings {
+            background: radial-gradient(circle at center, #e0e0e0 0%, #f0f0f0 100%);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .cyber-settings-option {
+            margin: 40px 0;
+        }
+
+        .cyber-settings-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        body.light-mode .cyber-settings-title {
+            color: #0066ff;
+            text-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+        }
+
+        .cyber-mode-btn {
+            padding: 12px 30px;
+            margin: 0 15px;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+            border-radius: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+        }
+
+        body.light-mode .cyber-mode-btn {
+            background: rgba(0, 102, 255, 0.1);
+            color: #0066ff;
+            border: 1px solid #0066ff;
+            box-shadow: 0 0 15px rgba(0, 102, 255, 0.1);
+        }
+
+        .cyber-mode-btn:hover {
+            background: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        body.light-mode .cyber-mode-btn:hover {
+            background: rgba(0, 102, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 102, 255, 0.3);
+        }
+
+        .cyber-mode-btn.active {
+            background: var(--neon-blue);
+            color: var(--cyber-dark);
+            box-shadow: 0 0 25px var(--neon-blue);
+        }
+
+        body.light-mode .cyber-mode-btn.active {
+            background: #0066ff;
+            color: white;
+            box-shadow: 0 0 25px #0066ff;
+        }
+
+        .cyber-language-btn {
+            padding: 12px 25px;
+            margin: 0 10px;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+            border-radius: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+        }
+
+        body.light-mode .cyber-language-btn {
+            background: rgba(0, 102, 255, 0.1);
+            color: #0066ff;
+            border: 1px solid #0066ff;
+            box-shadow: 0 0 15px rgba(0, 102, 255, 0.1);
+        }
+
+        .cyber-language-btn:hover {
+            background: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        body.light-mode .cyber-language-btn:hover {
+            background: rgba(0, 102, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 102, 255, 0.3);
+        }
+
+        .cyber-language-btn.active {
+            background: var(--neon-blue);
+            color: var(--cyber-dark);
+            box-shadow: 0 0 25px var(--neon-blue);
+        }
+
+        body.light-mode .cyber-language-btn.active {
+            background: #0066ff;
+            color: white;
+            box-shadow: 0 0 25px #0066ff;
+        }
+
+        .cyber-back-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin-top: 40px;
+            background: rgba(255, 42, 109, 0.1);
+            color: var(--neon-pink);
+            border: 1px solid var(--neon-pink);
+            border-radius: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(255, 42, 109, 0.1);
+        }
+
+        body.light-mode .cyber-back-btn {
+            background: rgba(255, 0, 170, 0.1);
+            color: #ff00aa;
+            border: 1px solid #ff00aa;
+            box-shadow: 0 0 15px rgba(255, 0, 170, 0.1);
+        }
+
+        .cyber-back-btn:hover {
+            background: rgba(255, 42, 109, 0.2);
+            box-shadow: 0 0 25px rgba(255, 42, 109, 0.3);
+            transform: translateY(-3px);
+        }
+
+        body.light-mode .cyber-back-btn:hover {
+            background: rgba(255, 0, 170, 0.2);
+            box-shadow: 0 0 25px rgba(255, 0, 170, 0.3);
+        }
+
+        /* Audio Controls */
+        .cyber-audio-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .cyber-audio-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 240, 255, 0.2);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+
+        body.light-mode .cyber-audio-btn {
+            background: rgba(0, 102, 255, 0.2);
+            border: 1px solid #0066ff;
+            color: #0066ff;
+            box-shadow: 0 0 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .cyber-audio-btn:hover {
+            background: rgba(255, 42, 109, 0.2);
+            border-color: var(--neon-pink);
+            color: var(--neon-pink);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 42, 109, 0.4);
+        }
+
+        body.light-mode .cyber-audio-btn:hover {
+            background: rgba(255, 0, 170, 0.2);
+            border-color: #ff00aa;
+            color: #ff00aa;
+            box-shadow: 0 0 20px rgba(255, 0, 170, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cyber-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .cyber-hero p {
+                font-size: 1rem;
+            }
+            
+            .cyber-section-title {
+                font-size: 2rem;
+            }
+            
+            .cyber-channel-title {
+                font-size: 2rem;
+            }
+            
+            .cyber-nav-menu a {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            .cyber-service-item {
+                padding: 20px;
+            }
+            
+            .cyber-contact-form {
+                padding: 30px 20px;
+            }
+            
+            /* Adjust news card size for mobile */
+            .cyber-news-card {
+                width: 95%;
+                margin: 0 auto;
+            }
+            
+            .cyber-news-img {
+                height: 180px;
+            }
+            
+            .cyber-language-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cyber-language-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cyber-logo {
+                font-size: 1.5rem;
+            }
+            
+            .cyber-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .cyber-section-title {
+                font-size: 1.8rem;
+            }
+            
+            .cyber-mode-btn, .cyber-language-btn {
+                padding: 10px 15px;
+                margin: 0 5px;
+                font-size: 0.9rem;
+            }
+            
+            .cyber-news-img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cyber Header -->
+    <header class="cyber-header">
+        <div class="cyber-logo">ＤａＳｕｎ ＭａＸ</div>
+        <div class="cyber-nav-container">
+            <button class="cyber-nav-btn" id="cyberNavToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="cyber-nav-menu" id="cyberNavMenu">
+                <a href="#home">Home</a>
+                <a href="#news">Tech News</a>
+                <a href="#skills">My Skills</a>
+                <a href="#services">Services</a>
+                <a href="#send-message">Send Message</a>
+                <a href="#contact">Contact Owner</a>
+                <a href="#settings">Settings</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cyber Hero Section -->
+    <section class="cyber-hero" id="home">
+        <div class="cyber-hero-content">
+            <img src="https://i.ibb.co/bRMThCLy/3613.jpg" alt="Dasun Max Logo" class="cyber-hero-logo animate__animated animate__pulse">
+            <h1 class="animate__animated animate__fadeInDown">I'm Dasun Max</h1>
+            <p class="animate__animated animate__fadeInUp animate-delay-1">A passionate and skilled web designer and programmer with a strong focus on creating modern, user-friendly, and responsive websites. With experience in both front-end and back-end development, I bring creative design and functional coding together to build high-quality digital experiences. Whether it's designing sleek UI/UX layouts or developing custom web solutions, I strive to deliver results that meet client goals and exceed expectations.😊</p>
+        </div>
+    </section>
+
+    <!-- Cyber News Section -->
+    <section class="cyber-news" id="news">
+        <h2 class="cyber-section-title animate__animated animate__fadeIn">WEEKEND TECH PULSE</h2>
+        <div class="cyber-news-container">
+            <div class="cyber-news-slide" id="cyberNewsSlider">
+                <!-- News Item 1 -->
+                <div class="cyber-news-item">
+                    <div class="cyber-news-card">
+                        <img src="https://techcrunch.com/wp-content/uploads/2023/03/GettyImages-1248997701.jpg" alt="Quantum Computing" class="cyber-news-img">
+                        <div class="cyber-news-content">
+                            <span class="cyber-news-date">JUNE 15, 2025</span>
+                            <h3 class="cyber-news-title">QUANTUM COMPUTING BREAKTHROUGH</h3>
+                            <p class="cyber-news-desc">Researchers achieve quantum supremacy with new 128-qubit processor that can solve problems in minutes that would take classical computers millennia. This breakthrough could revolutionize cryptography, drug discovery, and AI development.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- News Item 2 -->
+                <div class="cyber-news-item">
+                    <div class="cyber-news-card">
+                        <img src="https://media.wired.com/photos/5f401ecca253758809b6cc3a/16:9/w_2400,h_1350,c_limit/business_neuralink_1076965180.jpg" alt="Neural Interface" class="cyber-news-img">
+                        <div class="cyber-news-content">
+                            <span class="cyber-news-date">JUNE 12, 2025</span>
+                            <h3 class="cyber-news-title">NEURAL INTERFACE REVOLUTION</h3>
+                            <p class="cyber-news-desc">New non-invasive brain-computer interface allows thought-to-text at 100 words per minute with 95% accuracy, revolutionizing communication for disabled users and potentially changing how we interact with technology.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- News Item 3 -->
+                <div class="cyber-news-item">
+                    <div class="cyber-news-card">
+                        <img src="https://www.sdxcentral.com/wp-content/uploads/2023/02/shutterstock_1934004591-16x9-1.jpg" alt="6G Network" class="cyber-news-img">
+                        <div class="cyber-news-content">
+                            <span class="cyber-news-date">JUNE 10, 2025</span>
+                            <h3 class="cyber-news-title">6G TESTING BEGINS</h3>
+                            <p class="cyber-news-desc">First 6G network tests show speeds exceeding 1Tbps with near-zero latency, promising to transform IoT, AR/VR, and autonomous systems by 2030. Early adopters report seamless 8K streaming and instant cloud computing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Item 4 -->
+                <div class="cyber-news-item">
+                    <div class="cyber-news-card">
+                        <img src="https://www.science.org/do/10.1126/science.add7246/abs/_20220606_on_ai_computer_art.jpg" alt="AI Art" class="cyber-news-img">
+                        <div class="cyber-news-content">
+                            <span class="cyber-news-date">JUNE 8, 2025</span>
+                            <h3 class="cyber-news-title">AI GENERATES FULL-LENGTH MOVIES</h3>
+                            <p class="cyber-news-desc">New AI systems can now generate 2-hour feature films with coherent plots from simple text prompts, raising questions about the future of Hollywood and creative industries.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Item 5 -->
+                <div class="cyber-news-item">
+                    <div class="cyber-news-card">
+                        <img src="https://cdn.mos.cms.futurecdn.net/9X5R2tD3eBHqKZcmXj5V6H.jpg" alt="Flying Cars" class="cyber-news-img">
+                        <div class="cyber-news-content">
+                            <span class="cyber-news-date">JUNE 5, 2025</span>
+                            <h3 class="cyber-news-title">FLYING CAR APPROVED FOR COMMERCIAL USE</h3>
+                            <p class="cyber-news-desc">The first commercially available flying car receives regulatory approval in Japan, with plans for limited release next year. The vehicle transforms between driving and flight modes in under 60 seconds.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Item 6 -->
+                <div class="cyber-news-item">
+                    <div class="cyber-news-card">
+                        <img src="https://cdn.arstechnica.net/wp-content/uploads/2022/07/microsoft_hololens_2-800x450.jpg" alt="AR Glasses" class="cyber-news-img">
+                        <div class="cyber-news-content">
+                            <span class="cyber-news-date">JUNE 3, 2025</span>
+                            <h3 class="cyber-news-title">AR GLASSES REPLACE SMARTPHONES</h3>
+                            <p class="cyber-news-desc">Sales of augmented reality glasses surpass smartphones for the first time as new models offer all-day battery life, retina-level resolution, and seamless integration with digital lives.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Item 7 -->
+                <div class="cyber-news-item">
+                    <div class="cyber-news-card">
+                        <img src="https://www.science.org/do/10.1126/science.abi7172/abs/GettyImages-1168653092.jpg" alt="Lab-Grown Meat" class="cyber-news-img">
+                        <div class="cyber-news-content">
+                            <span class="cyber-news-date">MAY 30, 2025</span>
+                            <h3 class="cyber-news-title">LAB-GROWN MEAT PRICES DROP 90%</h3>
+                            <p class="cyber-news-desc">Breakthroughs in cellular agriculture make lab-grown meat cheaper than traditional meat for the first time, with major fast-food chains announcing nationwide rollouts of cultured meat products.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Item 8 -->
+                <div class="cyber-news-item">
+                    <div class="cyber-news-card">
+                        <img src="https://cdn.mos.cms.futurecdn.net/4U6jndXGQ5TjY3vVwvXp3F.jpg" alt="Space Tourism" class="cyber-news-img">
+                        <div class="cyber-news-content">
+                            <span class="cyber-news-date">MAY 28, 2025</span>
+                            <h3 class="cyber-news-title">SPACE TOURISM PRICES PLUMMET</h3>
+                            <p class="cyber-news-desc">New reusable rocket technology reduces the cost of suborbital flights to $50,000, making space tourism accessible to upper-middle-class consumers for the first time.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Item 9 -->
+                <div class="cyber-news-item">
+                    <div class="cyber-news-card">
+                        <img src="https://www.science.org/do/10.1126/science.abc5792/abs/GettyImages-1199242402.jpg" alt="mRNA Vaccine" class="cyber-news-img">
+                        <div class="cyber-news-content">
+                            <span class="cyber-news-date">MAY 25, 2025</span>
+                            <h3 class="cyber-news-title">MRNA VACCINES FOR CANCER SHOW PROMISE</h3>
+                            <p class="cyber-news-desc">Early clinical trials show personalized mRNA vaccines can train immune systems to recognize and destroy cancer cells with remarkable precision, offering hope for previously untreatable cancers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Item 10 -->
+                <div class="cyber-news-item">
+                    <div class="cyber-news-card">
+                        <img src="https://cdn.arstechnica.net/wp-content/uploads/2022/03/nvidia-omniverse-800x450.jpg" alt="Metaverse" class="cyber-news-img">
+                        <div class="cyber-news-content">
+                            <span class="cyber-news-date">MAY 22, 2025</span>
+                            <h3 class="cyber-news-title">METAVERSE WORKSPACES BECOME MAINSTREAM</h3>
+                            <p class="cyber-news-desc">Over 40% of Fortune 500 companies now conduct at least some operations in metaverse environments, with productivity gains reported in collaborative projects and training scenarios.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cyber-news-nav">
+                <button class="cyber-news-nav-btn" id="cyberPrevNews"><i class="fas fa-chevron-left"></i></button>
+                <button class="cyber-news-nav-btn" id="cyberNextNews"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="cyber-news-indicators" id="cyberNewsIndicators">
+                <div class="cyber-news-indicator active"></div>
+                <div class="cyber-news-indicator"></div>
+                <div class="cyber-news-indicator"></div>
+                <div class="cyber-news-indicator"></div>
+                <div class="cyber-news-indicator"></div>
+                <div class="cyber-news-indicator"></div>
+                <div class="cyber-news-indicator"></div>
+                <div class="cyber-news-indicator"></div>
+                <div class="cyber-news-indicator"></div>
+                <div class="cyber-news-indicator"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cyber Contact Form Section -->
+    <section class="cyber-contact" id="contact-form">
+        <div class="cyber-contact-form">
+            <h2 class="cyber-section-title">CONTACT PULSE</h2>
+            <form id="cyberMessageForm">
+                <div class="cyber-form-group">
+                    <label for="cyberEmail">ENTER YOUR EMAIL</label>
+                    <input type="email" class="cyber-form-control" id="cyberEmail" required>
+                </div>
+                <div class="cyber-form-group">
+                    <label for="cyberWhatsapp">ENTER YOUR WHATSAPP NUMBER</label>
+                    <input type="tel" class="cyber-form-control" id="cyberWhatsapp" required>
+                </div>
+                <div class="cyber-form-group">
+                    <label for="cyberName">ENTER YOUR NAME</label>
+                    <input type="text" class="cyber-form-control" id="cyberName" required>
+                </div>
+                <div class="cyber-form-group">
+                    <label for="cyberMessage">ENTER MESSAGE</label>
+                    <textarea class="cyber-form-control" id="cyberMessage" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cyber-btn-submit">TRANSMIT MESSAGE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Cyber Channels Section -->
+    <section class="cyber-channels" id="channels">
+        <img src="https://i.ibb.co/zWwnYqzS/5136.jpg" alt="WACloudX Logo" class="cyber-channel-logo">
+        <h2 class="cyber-channel-title">WACloudX</h2>
+        <a href="https://whatsapp.com/channel/0029Vb5qFM0BvvsmOCFEIu3g" class="cyber-channel-btn">JOIN CHANNEL</a>
+        <p class="cyber-notice">MY OTHER SERVICES AND DETAILS CHECK NAVIGATION BAR</p>
+    </section>
+
+    <!-- Cyber Skills Section -->
+    <section class="cyber-skills" id="skills">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 class="cyber-section-title">MY CODING SKILLSET</h2>
+            
+            <div class="cyber-language-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174854.png" alt="HTML5" class="cyber-language-icon">
+                <div class="cyber-language-details">
+                    <h3 class="cyber-language-name">HTML5</h3>
+                    <p class="cyber-language-desc">Advanced proficiency in semantic HTML5 markup, creating structured and accessible web content with modern elements and APIs.</p>
+                </div>
+            </div>
+            
+            <div class="cyber-language-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS3" class="cyber-language-icon">
+                <div class="cyber-language-details">
+                    <h3 class="cyber-language-name">CSS3</h3>
+                    <p class="cyber-language-desc">Expert in CSS3 including Flexbox, Grid, animations, transitions, and responsive design principles for pixel-perfect layouts.</p>
+                </div>
+            </div>
+            
+            <div class="cyber-language-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript" class="cyber-language-icon">
+                <div class="cyber-language-details">
+                    <h3 class="cyber-language-name">JavaScript</h3>
+                    <p class="cyber-language-desc">Strong command of modern JavaScript (ES6+), including DOM manipulation, async programming, and API integration.</p>
+                </div>
+            </div>
+            
+            <div class="cyber-language-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968381.png" alt="TypeScript" class="cyber-language-icon">
+                <div class="cyber-language-details">
+                    <h3 class="cyber-language-name">TypeScript</h3>
+                    <p class="cyber-language-desc">Experience with TypeScript for building scalable applications with type safety and enhanced developer experience.</p>
+                </div>
+            </div>
+            
+            <div class="cyber-language-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png" alt="Bootstrap" class="cyber-language-icon">
+                <div class="cyber-language-details">
+                    <h3 class="cyber-language-name">Bootstrap</h3>
+                    <p class="cyber-language-desc">Proficient in Bootstrap framework for rapid prototyping and building responsive, mobile-first websites.</p>
+                </div>
+            </div>
+            
+            <div class="cyber-language-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/919/919825.png" alt="Node.js" class="cyber-language-icon">
+                <div class="cyber-language-details">
+                    <h3 class="cyber-language-name">Node.js</h3>
+                    <p class="cyber-language-desc">Backend development with Node.js, creating server-side applications and APIs with Express and other frameworks.</p>
+                </div>
+            </div>
+            
+            <div class="cyber-language-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/919/919851.png" alt="React" class="cyber-language-icon">
+                <div class="cyber-language-details">
+                    <h3 class="cyber-language-name">React</h3>
+                    <p class="cyber-language-desc">Building dynamic single-page applications with React, utilizing hooks, context API, and component-based architecture.</p>
+                </div>
+            </div>
+            
+            <div class="cyber-language-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968671.png" alt="MongoDB" class="cyber-language-icon">
+                <div class="cyber-language-details">
+                    <h3 class="cyber-language-name">MongoDB</h3>
+                    <p class="cyber-language-desc">NoSQL database experience with MongoDB, including schema design, queries, and aggregation pipelines.</p>
+                </div>
+            </div>
+            
+            <div class="cyber-language-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/919/919854.png" alt="Python" class="cyber-language-icon">
+                <div class="cyber-language-details">
+                    <h3 class="cyber-language-name">Python</h3>
+                    <p class="cyber-language-desc">Python programming for web development, automation, and scripting tasks with various libraries and frameworks.</p>
+                </div>
+            </div>
+            
+            <div class="cyber-language-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png" alt="C++" class="cyber-language-icon">
+                <div class="cyber-language-details">
+                    <h3 class="cyber-language-name">C++</h3>
+                    <p class="cyber-language-desc">Experience with C++ for system programming, performance-critical applications, and algorithm implementation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cyber Services Section -->
+    <section class="cyber-services" id="services">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 class="cyber-section-title">SERVICE MATRIX</h2>
+            
+            <div class="cyber-service-item">
+                <h3 class="cyber-service-title">🔴 WEBSITE DESIGN</h3>
+                <p>Custom, responsive websites with modern UI/UX design principles and cutting-edge technologies.</p>
+                <a href="https://wa.me/+94765775550?text=Website+Design❤️😊" class="cyber-service-btn">CONTACT</a>
+            </div>
+            
+            <div class="cyber-service-item">
+                <h3 class="cyber-service-title">🔴 EDITING</h3>
+                <p>Professional photo and video editing services for social media, marketing, and personal projects.</p>
+                <a href="https://wa.me/+94765775550?text=Photos+And+Videos+Editing😊" class="cyber-service-btn">CONTACT</a>
+            </div>
+            
+            <div class="cyber-service-item">
+                <h3 class="cyber-service-title">🔴 SOCIAL MEDIA BOOSTING</h3>
+                <p>Increase your social media presence with targeted growth strategies and engagement techniques.</p>
+                <a href="https://wa.me/+94765775550?text=Boost+Social+Media" class="cyber-service-btn">CONTACT</a>
+            </div>
+            
+            <div class="cyber-service-item">
+                <h3 class="cyber-service-title">🔴 PROXY MAKING</h3>
+                <p>Secure proxy solutions for privacy protection and unrestricted internet access.</p>
+                <a href="https://wa.me/+94765775550?text=Create+Proxy+Account😊" class="cyber-service-btn">CONTACT</a>
+            </div>
+            
+            <div class="cyber-service-item">
+                <h3 class="cyber-service-title">🔴 AUTHENTICATOR UNLOCKING</h3>
+                <p>Recovery solutions for locked authenticator apps and two-factor authentication systems.</p>
+                <a href="https://wa.me/+94765775550?text=Unlock+Authanicator😊" class="cyber-service-btn">CONTACT</a>
+            </div>
+            
+            <div class="cyber-service-item">
+                <h3 class="cyber-service-title">🔴 TERMUX TOOLS</h3>
+                <p>Powerful Termux-based tools and scripts for advanced mobile computing tasks.</p>
+                <a href="https://wa.me/+94765775550?text=Termux+Tools😊" class="cyber-service-btn">CONTACT</a>
+            </div>
+            
+            <div class="cyber-service-item">
+                <h3 class="cyber-service-title">🔴 BOT DEPLOYING</h3>
+                <p>Professional deployment of custom bots for WhatsApp, Telegram, and other platforms.</p>
+                <a href="https://wa.me/+94765775550?text=BOT+DEPLOY😊" class="cyber-service-btn">CONTACT</a>
+            </div>
+            
+            <div class="cyber-service-item">
+                <h3 class="cyber-service-title">🔴 BOT CREATING YOUR NAME</h3>
+                <p>Custom bot development tailored to your specific requirements and branding.</p>
+                <a href="https://wa.me/+94765775550?text=BOT+FOR+MY+NAME😊" class="cyber-service-btn">CONTACT</a>
+            </div>
+            
+            <div class="cyber-service-item">
+                <h3 class="cyber-service-title">🔴 PLUGINS SELLING</h3>
+                <p>Premium plugins and extensions to enhance your website or application functionality.</p>
+                <a href="https://wa.me/+94765775550?text=Plugins😊" class="cyber-service-btn">CONTACT</a>
+            </div>
+            
+            <p class="cyber-notice" style="margin-top: 50px;">COMMING SOON</p>
+        </div>
+    </section>
+
+    <!-- Cyber Send Message Section -->
+    <section class="cyber-contact" id="send-message">
+        <div class="cyber-contact-form">
+            <h2 class="cyber-section-title">DIRECT MESSAGE</h2>
+            <form id="cyberDirectMessageForm">
+                <div class="cyber-form-group">
+                    <label for="cyberDirectEmail">ENTER YOUR EMAIL</label>
+                    <input type="email" class="cyber-form-control" id="cyberDirectEmail" required>
+                </div>
+                <div class="cyber-form-group">
+                    <label for="cyberDirectWhatsapp">ENTER YOUR WHATSAPP NUMBER</label>
+                    <input type="tel" class="cyber-form-control" id="cyberDirectWhatsapp" required>
+                </div>
+                <div class="cyber-form-group">
+                    <label for="cyberDirectMessage">ENTER MESSAGE</label>
+                    <textarea class="cyber-form-control" id="cyberDirectMessage" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cyber-btn-submit">SEND ENCRYPTED</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Cyber Contact Owner Section -->
+    <section class="cyber-settings" id="contact">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h2 class="cyber-section-title">CONTACT MATRIX</h2>
+            
+            <div class="cyber-settings-option">
+                <h3 class="cyber-settings-title">EMAIL</h3>
+                <p style="color: var(--neon-blue); font-size: 1.2rem;">dasunmax08@gmail.com</p>
+            </div>
+            
+            <div class="cyber-settings-option">
+                <h3 class="cyber-settings-title">WHATSAPP</h3>
+                <a href="https://wa.me/message/BTTVL7PGBVCYO1" class="cyber-channel-btn" style="display: inline-block; margin: 20px 0;">INITIATE CHAT</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cyber Settings Section -->
+    <section class="cyber-settings" id="settings">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h2 class="cyber-section-title">SYSTEM SETTINGS</h2>
+            
+            <div class="cyber-settings-option">
+                <h3 class="cyber-settings-title">DISPLAY MODE</h3>
+                <div>
+                    <button class="cyber-mode-btn active" id="cyberDarkModeBtn">DARK MATRIX</button>
+                    <button class="cyber-mode-btn" id="cyberLightModeBtn">LIGHT GRID</button>
+                </div>
+            </div>
+            
+            <div class="cyber-settings-option">
+                <h3 class="cyber-settings-title">LANGUAGE PROTOCOL</h3>
+                <div>
+                    <button class="cyber-language-btn" data-lang="sinhala">සිංහල</button>
+                    <button class="cyber-language-btn" data-lang="tamil">தமிழ்</button>
+                    <button class="cyber-language-btn active" data-lang="english">ENGLISH</button>
+                </div>
+            </div>
+            
+            <a href="#home" class="cyber-back-btn">
+                <i class="fas fa-arrow-left"></i> RETURN TO MAINFRAME
+            </a>
+        </div>
+    </section>
+
+    <!-- Audio Controls -->
+    <div class="cyber-audio-controls">
+        <button class="cyber-audio-btn" id="cyberAudioToggle">
+            <i class="fas fa-volume-up"></i>
+        </button>
+        <audio id="cyberAudio" loop>
+            <source src="https://www.youtube.com/embed/qOc6c9DBCSQ?autoplay=1&loop=1" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        // Navigation Toggle
+        const cyberNavToggle = document.getElementById('cyberNavToggle');
+        const cyberNavMenu = document.getElementById('cyberNavMenu');
+
+        cyberNavToggle.addEventListener('click', () => {
+            cyberNavMenu.classList.toggle('active');
+        });
+
+        // Navigation Links
+        document.querySelectorAll('.cyber-nav-menu a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                
+                // Hide all sections except hero
+                document.querySelector('.cyber-hero').style.display = 'none';
+                document.querySelectorAll('section:not(.cyber-hero)').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Show target section
+                if (targetId === 'home') {
+                    document.querySelector('.cyber-hero').style.display = 'flex';
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    document.getElementById(targetId).style.display = 'block';
+                    document.getElementById(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Close menu
+                cyberNavMenu.classList.remove('active');
+            });
+        });
+
+        // News Slider
+        let cyberCurrentNewsIndex = 0;
+        const cyberNewsSlider = document.getElementById('cyberNewsSlider');
+        const cyberNewsItems = document.querySelectorAll('.cyber-news-item');
+        const cyberTotalNews = cyberNewsItems.length;
+        const cyberIndicators = document.querySelectorAll('.cyber-news-indicator');
+
+        document.getElementById('cyberNextNews').addEventListener('click', () => {
+            cyberCurrentNewsIndex = (cyberCurrentNewsIndex + 1) % cyberTotalNews;
+            updateCyberNewsSlider();
+        });
+
+        document.getElementById('cyberPrevNews').addEventListener('click', () => {
+            cyberCurrentNewsIndex = (cyberCurrentNewsIndex - 1 + cyberTotalNews) % cyberTotalNews;
+            updateCyberNewsSlider();
+        });
+
+        function updateCyberNewsSlider() {
+            cyberNewsSlider.style.transform = `translateX(-${cyberCurrentNewsIndex * 100}%)`;
+            
+            // Update indicators
+            cyberIndicators.forEach((indicator, index) => {
+                if (index === cyberCurrentNewsIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        // Clickable indicators
+        cyberIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                cyberCurrentNewsIndex = index;
+                updateCyberNewsSlider();
+            });
+        });
+
+        // Auto-rotate news
+        let cyberNewsInterval = setInterval(() => {
+            cyberCurrentNewsIndex = (cyberCurrentNewsIndex + 1) % cyberTotalNews;
+            updateCyberNewsSlider();
+        }, 5000);
+
+        // Pause on hover
+        const cyberNewsContainer = document.querySelector('.cyber-news-container');
+        cyberNewsContainer.addEventListener('mouseenter', () => {
+            clearInterval(cyberNewsInterval);
+        });
+
+        cyberNewsContainer.addEventListener('mouseleave', () => {
+            cyberNewsInterval = setInterval(() => {
+                cyberCurrentNewsIndex = (cyberCurrentNewsIndex + 1) % cyberTotalNews;
+                updateCyberNewsSlider();
+            }, 5000);
+        });
+
+        // Dark/Light Mode Toggle
+        document.getElementById('cyberDarkModeBtn').addEventListener('click', () => {
+            document.body.classList.add('dark-mode');
+            document.body.classList.remove('light-mode');
+            document.getElementById('cyberDarkModeBtn').classList.add('active');
+            document.getElementById('cyberLightModeBtn').classList.remove('active');
+        });
+
+        document.getElementById('cyberLightModeBtn').addEventListener('click', () => {
+            document.body.classList.add('light-mode');
+            document.body.classList.remove('dark-mode');
+            document.getElementById('cyberLightModeBtn').classList.add('active');
+            document.getElementById('cyberDarkModeBtn').classList.remove('active');
+        });
+
+        // Form Submission
+        document.getElementById('cyberMessageForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('cyberEmail').value;
+            const whatsapp = document.getElementById('cyberWhatsapp').value;
+            const name = document.getElementById('cyberName').value;
+            const message = document.getElementById('cyberMessage').value;
+            
+            // Here you would typically send this data to your server
+            console.log({ email, whatsapp, name, message });
+            
+            // Simulate sending to dasunmax08@gmail.com
+            alert('Message transmitted successfully to dasunmax08@gmail.com!');
+            e.target.reset();
+        });
+
+        document.getElementById('cyberDirectMessageForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('cyberDirectEmail').value;
+            const whatsapp = document.getElementById('cyberDirectWhatsapp').value;
+            const message = document.getElementById('cyberDirectMessage').value;
+            
+            console.log({ email, whatsapp, message });
+            alert('Direct message transmitted successfully to dasunmax08@gmail.com!');
+            e.target.reset();
+        });
+
+        // Language Selection
+        const languageData = {
+            english: {
+                home: "Home",
+                news: "Tech News",
+                skills: "My Skills",
+                services: "Services",
+                sendMessage: "Send Message",
+                contact: "Contact Owner",
+                settings: "Settings",
+                heroTitle: "I'm Dasun Max",
+                heroDesc: "A passionate and skilled web designer and programmer with a strong focus on creating modern, user-friendly, and responsive websites. With experience in both front-end and back-end development, I bring creative design and functional coding together to build high-quality digital experiences. Whether it's designing sleek UI/UX layouts or developing custom web solutions, I strive to deliver results that meet client goals and exceed expectations.😊",
+                newsTitle: "WEEKEND TECH PULSE",
+                contactTitle: "CONTACT PULSE",
+                channelTitle: "WACloudX",
+                skillsTitle: "MY CODING SKILLSET",
+                servicesTitle: "SERVICE MATRIX",
+                messageTitle: "DIRECT MESSAGE",
+                contactMatrix: "CONTACT MATRIX",
+                settingsTitle: "SYSTEM SETTINGS",
+                darkMode: "DARK MATRIX",
+                lightMode: "LIGHT GRID",
+                return: "RETURN TO MAINFRAME"
+            },
+            sinhala: {
+                home: "මුල් පිටුව",
+                news: "තාක්ෂණ පුවත්",
+                skills: "මගේ නිපුණතා",
+                services: "සේවාවන්",
+                sendMessage: "පණිවිඩය යවන්න",
+                contact: "හිමිකරු අමතන්න",
+                settings: "සැකසුම්",
+                heroTitle: "මම දසුන් මැක්ස්",
+                heroDesc: "නවීන, පරිශීලක-හිතකාමී හා ප්‍රතිචාරාත්මක වෙබ් අඩවි නිර්මාණය කිරීම කෙරෙහි තීව්‍ර අවධානයක් යොමු කරන උද්යෝගිමත් හා කුසලතා සහිත වෙබ් නිර්මාණකරුවෙක් සහ ප්‍රෝග්‍රෑමර් කෙනෙක්. ඉදිරිපස හා පසුපස විකාසනය යන දෙකෙහිම අත්දැකීම් සහිතව, මම නිර්මාණාත්මක නිර්මාණ හා ක්‍රියාකාරී කේතනය එකට ගෙන ඒමින් උසස් තත්ත්වයේ ඩිජිටල් අත්දැකීම් ගොඩනඟමි. එය UI/UX පිරිසැලසුම් නිර්මාණය කිරීම වුවද හෝ අභිරුචි වෙබ් විසඳුම් සංවර්ධනය කිරීම වුවද, මම ගනුදෙනුකරුගේ ඉලක්ක සපුරාලන හා අපේක්ෂාවන් ඉක්මවන ප්‍රතිඵල ලබා දීමට උත්සාහ කරමි.😊",
+                newsTitle: "සති අන්ත තාක්ෂණ ප්‍රචාරය",
+                contactTitle: "සම්බන්ධතා ප්‍රචාරය",
+                channelTitle: "WACloudX",
+                skillsTitle: "මගේ කේතන නිපුණතා",
+                servicesTitle: "සේවා අනුක්‍රමිකාව",
+                messageTitle: "සෘජු පණිවිඩය",
+                contactMatrix: "සම්බන්ධතා අනුක්‍රමිකාව",
+                settingsTitle: "පද්ධති සැකසුම්",
+                darkMode: "අඳුරු අනුක්‍රමිකාව",
+                lightMode: "ආලෝක ජාලය",
+                return: "ප්‍රධාන රාමුවට ආපසු"
+            },
+            tamil: {
+                home: "முகப்பு",
+                news: "தொழில்நுட்ப செய்திகள்",
+                skills: "எனது திறன்கள்",
+                services: "சேவைகள்",
+                sendMessage: "செய்தி அனுப்பவும்",
+                contact: "உரிமையாளரைத் தொடர்பு கொள்ளவும்",
+                settings: "அமைப்புகள்",
+                heroTitle: "நான் தசுன் மேக்ஸ்",
+                heroDesc: "நவீன, பயனர்-நட்பு மற்றும் பதிலளிக்கும் வலைத்தளங்களை உருவாக்குவதில் கடுமையான கவனம் செலுத்தும் ஒரு ஆர்வமுள்ள மற்றும் திறமையான வலை வடிவமைப்பாளர் மற்றும் புரோகிராமர். முன்-இறுதி மற்றும் பின்-இறுதி மேம்பாடு ஆகிய இரண்டிலும் அனுபவம் கொண்டு, உயர்தர டிஜிட்டல் அனுபவங்களை உருவாக்க நான் படைப்பாற்றல் வடிவமைப்பு மற்றும் செயல்பாட்டு குறியீட்டை ஒன்றாகக் கொண்டு வருகிறேன். நவீன UI/UX தளவமைப்புகளை வடிவமைப்பது அல்லது தனிப்பயன் வலைத் தீர்வுகளை உருவாக்குவது எதுவாக இருந்தாலும், வாடிக்கையாளர் இலக்குகளைப் பூர்த்தி செய்யும் மற்றும் எதிர்பார்ப்புகளை மீறும் முடிவுகளை வழங்க நான் முயற்சி செய்கிறேன்.😊",
+                newsTitle: "வார இறுதி தொழில்நுட்ப துடிப்பு",
+                contactTitle: "தொடர்பு துடிப்பு",
+                channelTitle: "WACloudX",
+                skillsTitle: "எனது குறியீட்டு திறமைகள்",
+                servicesTitle: "சேவை அணி",
+                messageTitle: "நேரடி செய்தி",
+                contactMatrix: "தொடர்பு அணி",
+                settingsTitle: "கணினி அமைப்புகள்",
+                darkMode: "இருண்ட அணி",
+                lightMode: "ஒளி கட்டம்",
+                return: "முதன்மை சட்டத்திற்குத் திரும்பு"
+            }
+        };
+
+        function updateLanguage(lang) {
+            const data = languageData[lang];
+            
+            // Update navigation
+            document.querySelectorAll('.cyber-nav-menu a').forEach((link, index) => {
+                const texts = [data.home, data.news, data.skills, data.services, data.sendMessage, data.contact, data.settings];
+                if (index < texts.length) {
+                    link.textContent = texts[index];
+                }
+            });
+            
+            // Update hero section
+            document.querySelector('.cyber-hero h1').textContent = data.heroTitle;
+            document.querySelector('.cyber-hero p').textContent = data.heroDesc;
+            
+            // Update section titles
+            document.querySelector('.cyber-news .cyber-section-title').textContent = data.newsTitle;
+            document.querySelector('.cyber-contact .cyber-section-title').textContent = data.contactTitle;
+            document.querySelector('.cyber-channels .cyber-channel-title').textContent = data.channelTitle;
+            document.querySelector('.cyber-skills .cyber-section-title').textContent = data.skillsTitle;
+            document.querySelector('.cyber-services .cyber-section-title').textContent = data.servicesTitle;
+            document.querySelector('#send-message .cyber-section-title').textContent = data.messageTitle;
+            document.querySelector('#contact .cyber-section-title').textContent = data.contactMatrix;
+            document.querySelector('#settings .cyber-section-title').textContent = data.settingsTitle;
+            
+            // Update buttons
+            document.getElementById('cyberDarkModeBtn').textContent = data.darkMode;
+            document.getElementById('cyberLightModeBtn').textContent = data.lightMode;
+            document.querySelector('.cyber-back-btn').innerHTML = `<i class="fas fa-arrow-left"></i> ${data.return}`;
+        }
+
+        document.querySelectorAll('.cyber-language-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const lang = e.target.getAttribute('data-lang');
+                
+                // Remove active class from all buttons
+                document.querySelectorAll('.cyber-language-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                e.target.classList.add('active');
+                
+                // Update language
+                updateLanguage(lang);
+            });
+        });
+
+        // Audio Controls
+        const cyberAudio = document.getElementById('cyberAudio');
+        const cyberAudioToggle = document.getElementById('cyberAudioToggle');
+        let isAudioPlaying = false;
+
+        cyberAudioToggle.addEventListener('click', () => {
+            if (isAudioPlaying) {
+                cyberAudio.pause();
+                cyberAudioToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            } else {
+                cyberAudio.play();
+                cyberAudioToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+            }
+            isAudioPlaying = !isAudioPlaying;
+        });
+
+        // Initialize dark mode as default
+        document.body.classList.add('dark-mode');
+        document.getElementById('cyberDarkModeBtn').classList.add('active');
+    </script>
+</body>
+</html>
